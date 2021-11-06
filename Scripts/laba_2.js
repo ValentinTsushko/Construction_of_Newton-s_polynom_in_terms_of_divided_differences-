@@ -1,3 +1,4 @@
+//-----------------------------------------------------------------------
 function Coef( x, f0){
   let table = new Array();
   table = [];
@@ -21,10 +22,8 @@ function Coef( x, f0){
       coef.push(table[i][0]);
   }
   return coef;
-
-
 }
-
+//-----------------------------------------------------------------------
 function Polinom( xi, yi, ApproxValue){
     let sum = 0;
     let ai = new Array();
@@ -39,7 +38,86 @@ function Polinom( xi, yi, ApproxValue){
     return(sum);
 
 }
+//-----------------------------------------------------------------------
+/*
+function grafic(xi, yi, polin){
+  let X = new Array();
+  X = [];
+  for(let i = xi[0]; i < xi[xi.length - 1]; i+=0.01){
+    X.push(i);
+  }
+    var data = google.visualization.arrayToDataTable([
+      X, polin
+    ]);
 
+    var options = {
+      title: 'Company Performance',
+      curveType: 'function',
+      legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+    chart.draw(data, options);
+}
+*/
+//-----------------------------------------------------------------------
+function grafic(xi, yi, polin){
+    // Получаем canvas элемент
+    let canvas = document.getElementById('canvas');
+    // Указываем элемент для 2D рисования
+    let ctx = canvas.getContext('2d');
+    ctx.fillStyle = "black"; // Задаём чёрный цвет для линий
+    ctx.lineWidth = 2.0; // Ширина линии
+    ctx.beginPath(); // Запускает путь
+    ctx.moveTo(250, 10); // Указываем начальный путь
+    ctx.lineTo(250, 490); // Перемешаем указатель
+    ctx.lineTo(250, 250); // Перемешаем указатель
+    ctx.lineTo(10, 250); // Перемешаем указатель
+    ctx.lineTo(490, 250); // Ещё раз перемешаем указатель
+    ctx.stroke(); // Делаем контур
+
+    // Цвет для рисования
+ctx.fillStyle = "black";
+// Цикл для отображения значений по Y
+for(let i = 0; i < 6; i++) {
+    ctx.fillText((2 - i) * 20 + "", 220, i * 80 + 60);
+    ctx.beginPath();
+    ctx.moveTo(245, i * 80 + 50);
+    ctx.lineTo(255, i * 80 + 50);
+    ctx.stroke();
+}
+for(let i = 0; i < 6; i++) {
+  if(i != 2){  // чтобы 2 раза ноль не рисовать
+    ctx.fillText((i - 2) + "", i * 80 + 50, 220);
+  }
+    ctx.beginPath();
+    ctx.moveTo(i * 80 + 50, 245);
+    ctx.lineTo(i * 80 + 50, 255);
+    ctx.stroke();
+}
+    // Объявляем массивы данных графика
+    let X = new Array();
+    X = [];
+    for(let i = xi[0]; i < xi[xi.length - 1]; i+=0.01){
+      X.push(i);
+    }
+    let Y = new Array();
+    Y = [];
+    for(let j = 0; j < yi.length - 1; j++){
+      for(let i = yi[j]; i < yi[j + 1]; i+=0.1){
+        Y.push(i);
+      }
+    }
+    // Цикл для от рисовки графиков
+    for(var i = 0; i < X.length - 1; i++) {
+      ctx.beginPath();
+      ctx.moveTo(X[i], Y[i]);
+      ctx.lineTo(X[i + 1], Y[i + 1]);
+      ctx.stroke();
+    }
+}
+//-----------------------------------------------------------------------
 function Start() {
 
   let a = 1;
@@ -67,10 +145,20 @@ function Start() {
       yi.splice(0,yi.length);  //  опустошаем массив
       yi = tmpY.split(',').map(Number);  //  переводим нашу строку в массив чиссел, а потом заполняем им xi
   }
+  /*
+  for(let i = 0; i < tmp.length + 1; i++){
+    if(tmp[i] != ','){
+      xi[i] = Number(tmp[i]);
+    }
+  }
+  */
+  console.log(xi);
 
   // Polinom Nutona
   let pol = Polinom(xi, yi, ApproxValue);
+  //var searchValue = document.getElementById('func').value(pol);
   document.getElementById('func').value = pol;
+  grafic(xi, yi, pol);
 }
 
 //   для открытия вкладки
