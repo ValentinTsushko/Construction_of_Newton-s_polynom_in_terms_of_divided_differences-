@@ -1,0 +1,51 @@
+body{
+    background-color: #a49d49; /* Цвет фона веб-страницы */
+   }
+   #rectangle{
+       width:600px;
+       height:700px;
+       background:#d4d09e;
+       margin-left: auto;
+       margin-right: auto;
+   }
+   #table{
+     padding: 3em 0;
+      text-align: center;
+   }
+
+   .tab {
+    overflow: hidden;
+    border: 2px solid #3d3b26;
+    background-color: #808000;
+}
+
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+
+.tab button:hover {
+    background-color: #a49d49;
+}
+
+
+.tab button.active {
+    background-color: #b5a642;
+    color: #fff;
+}
+
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 2px solid #3d3b26;
+    border-top: none;
+    background-color: #cfb53b;
+}
