@@ -67,18 +67,9 @@ function Start() {
       yi.splice(0,yi.length);  //  опустошаем массив
       yi = tmpY.split(',').map(Number);  //  переводим нашу строку в массив чиссел, а потом заполняем им xi
   }
-  /*
-  for(let i = 0; i < tmp.length + 1; i++){
-    if(tmp[i] != ','){
-      xi[i] = Number(tmp[i]);
-    }
-  }
-  */
-  console.log(xi);
 
   // Polinom Nutona
   let pol = Polinom(xi, yi, ApproxValue);
-  //var searchValue = document.getElementById('func').value(pol);
   document.getElementById('func').value = pol;
 }
 
