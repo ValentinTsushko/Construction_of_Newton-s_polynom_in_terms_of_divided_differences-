@@ -80,20 +80,22 @@ function grafic(xi, yi, polin){
     // Цвет для рисования
 ctx.fillStyle = "black";
 // Цикл для отображения значений по Y
-for(let i = 0; i < 6; i++) {
-    ctx.fillText((2 - i) * 20 + "", 220, i * 80 + 60);
-    ctx.beginPath();
-    ctx.moveTo(245, i * 80 + 50);
-    ctx.lineTo(255, i * 80 + 50);
-    ctx.stroke();
-}
-for(let i = 0; i < 6; i++) {
-  if(i != 2){  // чтобы 2 раза ноль не рисовать
-    ctx.fillText((i - 2) + "", i * 80 + 50, 220);
+for(let i = 0; i < 7; i++) {
+  if(i != 3){  // чтобы 2 раза ноль не рисовать
+    ctx.fillText((3 - i) * 20 + "", 220, i * 60 + 70);
   }
     ctx.beginPath();
-    ctx.moveTo(i * 80 + 50, 245);
-    ctx.lineTo(i * 80 + 50, 255);
+    ctx.moveTo(245, i * 60 + 70);
+    ctx.lineTo(255, i * 60 + 70);
+    ctx.stroke();
+}
+for(let i = 0; i < 7; i++) {
+  if(i != 3){  // чтобы 2 раза ноль не рисовать
+    ctx.fillText((i - 3) + "", i * 60 + 70, 220);
+  }
+    ctx.beginPath();
+    ctx.moveTo(i * 60 + 70, 245);
+    ctx.lineTo(i * 60 + 70, 255);
     ctx.stroke();
 }
     // Объявляем массивы данных графика
@@ -109,13 +111,17 @@ for(let i = 0; i < 6; i++) {
         Y.push(i);
       }
     }
+    console.log("X", X);
+    console.log("Y", Y);
     // Цикл для от рисовки графиков
-    for(var i = 0; i < X.length - 1; i++) {
-      ctx.beginPath();
-      ctx.moveTo(X[i] * 10, Y[i] * 100);
-      ctx.lineTo(X[i + 1] * 10, Y[i + 1] * 100);
-      ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(250 + X[0] * 10, 250 + (Y[0] * (-1)));   //  умножаем на -1 т.к. в канвасе используеться
+                                                        //  перевернутая система координат
+    for(var i = 0; i < Y.length - 1; i++) {
+      ctx.lineTo(250 + X[i + 1] * 10, 250 + (Y[i + 1] * (-1))); //  умножаем на -1 т.к. в канвасе используеться
+                                                                //  перевернутая система координат
     }
+    ctx.stroke();
 }
 //-----------------------------------------------------------------------
 function Start() {
