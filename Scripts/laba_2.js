@@ -112,8 +112,8 @@ for(let i = 0; i < 6; i++) {
     // Цикл для от рисовки графиков
     for(var i = 0; i < X.length - 1; i++) {
       ctx.beginPath();
-      ctx.moveTo(X[i], Y[i]);
-      ctx.lineTo(X[i + 1], Y[i + 1]);
+      ctx.moveTo(X[i] * 10, Y[i] * 100);
+      ctx.lineTo(X[i + 1] * 10, Y[i + 1] * 100);
       ctx.stroke();
     }
 }
