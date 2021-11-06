@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles/laba_2.css">
+  <script src="Scripts/laba_2.js"></script>
+  <!------------                   LaTex                        --------------->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!------------                   LaTex                        --------------->
+</head>
+<body id="rectangle">
+  <div class="tab">
+  <button class="tablinks" onclick="OpenFragm(event, 'Условие')">Условие</button>
+  <button class="tablinks" onclick="OpenFragm(event, 'Решение')">Решение</button>
+</div>
+
+<div id="Условие" class="tabcontent">
+  <h3 align="center">Условие</h3>
+  <p>Для функции \(y = f(x)\) заданной табличными значениями в узловых точках \(x_{0} = 1, x_{1} = 2, x_{2} = 3, x_{3} = 4, x_{4} = 5, x_{5} = 6 \)
+     построить интерполяционный полином Ньютона:<br>
+  <ol>
+    <li>При \(y_{0} = -8, y_{1} = -17, y_{2} = -22, y_{3} = -17, y_{4} = 4, y_{5} = 47 \)</li><br>
+    <li>Построить интерполяционный полином Ньютона \( N(x) \) , вычислив разделенные разности в таблице вида 3.1.;</li><br>
+	  <li>Построить график полинома \( N(x) \) интерполирующего функцию \( f(x) \);</li><br>
+	  <li>Найти (приближенное) значение функции \( f(x) \) в точке \(x=1 \);</li>
+  </ol>
+  Воспользуемся формулой полинома Ньютона:<br>
+  \(P_{n} (x) = a_{0} + a_{1}(x - x_{0})(x - x_{1}) + ... + a_{n}(x - x_{0})(x - x_{1})...(x - x_{n-1}) \)<br>
+  где<br>
+  \(a_{0} = f[x_{0}] \), \(a_{1} = f[x_{1}, x_{0}] \), ..., \(a_{r} = f[x_{r}, x_{r-1}, ..., x_{0}] \)<br>
+  где<br>
+  \(f[x_{i}] = y_{i}; \)<br>
+  \(f[x_{i+1}, x_{i}] = \dfrac{f[x_{i+1}] - f[x_{i}]}{x_{i+1} - x_{i}};...; \)<br>
+  \(f[x_{r}, x_{r-1}, ..., x_{0}] = \dfrac{f[x_{r}, x_{r-1}, ..., x_{1}] - f[x_{r-1}, ..., x_{0}]}{x_{r} - x_{0}}; \)
+</p>
+</div>
+
+<div id="Решение" class="tabcontent"  align="center">
+  <h3>Решение</h3>
+  <h4>Введите пожалуйста ваши \(x_{i}\) и \(y_{i}\) через запятую</h4>
+  <P style="text-align: center;"><input type="text" id = "Xi" size="56" maxlength="35" placeholder="По умолчанию x0 = 1, x1 = 2, x2 = 3, x3 = 4, x4 = 5, x5 = 6"></P>
+  <P style="text-align: center;"><input type="text" id = "Yi" size="56" maxlength="35" placeholder="По умолчанию y0 = -8, y1 = -17, y2 = -22, y3 = -17, y4 = 4, y5 = 47">
+  </P>
+  <h4>Приближенное значение f(x) в т.</h4><P style="text-align: center;"><input type="text" id = "ApproxValue" size="3" maxlength="5" value="1"></P>
+  <P style="text-align: center;"><input type="button" value="Run" onclick="Start()"></P>
+  <P style="text-align: center;"><input type="text" id = "func" size="25" maxlength="15" placeholder="Вывод программы"></P>
+  <p><img  align="center" src="pictures/2_2.png" height="400" width="400"></p>
+</div>
+
+</body>
+</html>
