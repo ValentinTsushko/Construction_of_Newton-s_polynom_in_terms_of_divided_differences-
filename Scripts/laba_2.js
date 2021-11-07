@@ -62,9 +62,7 @@ function grafic(xi, yi, polin){
 }
 */
 //-----------------------------------------------------------------------
-function grafic(xi, yi, polin){
-    // Получаем canvas элемент
-    let canvas = document.getElementById('canvas');
+function grafic(xi, yi, polin, canvas){
     // Указываем элемент для 2D рисования
     let ctx = canvas.getContext('2d');
     ctx.fillStyle = "black"; // Задаём чёрный цвет для линий
@@ -124,6 +122,13 @@ for(let i = 0; i < 11; i++) {
                                                                 //  перевернутая система координат
     }
     ctx.stroke();
+    ctx.strokeStyle = "black";
+
+}
+//-----------------------------------------------------------------------
+function Clear() {
+  let ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 //-----------------------------------------------------------------------
 function Start() {
@@ -166,7 +171,8 @@ function Start() {
   let pol = Polinom(xi, yi, ApproxValue);
   //var searchValue = document.getElementById('func').value(pol);
   document.getElementById('func').value = pol;
-  grafic(xi, yi, pol);
+  let canvas = document.getElementById('canvas');
+  grafic(xi, yi, pol, canvas);
 }
 
 //   для открытия вкладки
