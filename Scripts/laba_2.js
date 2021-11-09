@@ -107,8 +107,6 @@ for(let i = 0; i < 11; i++) {
     for(let i = 0; i < X.length; i++){
         Y.push(Polinom(xi, yi, X[i]));
     }
-    console.log("X", X);
-    console.log("Y", Y);
 
 
     // Цикл для от рисовки графиков
@@ -129,6 +127,15 @@ for(let i = 0; i < 11; i++) {
 function Clear() {
   let ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+//-----------------------------------------------------------------------
+function arrStrToArrNum(arr){
+  arr = arr.split(',');
+  let arrTmp = [];
+  for(let i = 0; i < arr.length; i++){
+    arrTmp[i] = Number(arr[i]);
+  }
+  return arrTmp;
 }
 //-----------------------------------------------------------------------
 function Start() {
@@ -152,11 +159,11 @@ function Start() {
 
   if(tmpX != ''){  //  если строка не пустая, то
       xi.splice(0,xi.length);  //  опустошаем массив
-      xi = tmpX.split(',').map(Number);  //  переводим нашу строку в массив чиссел, а потом заполняем им xi
+      xi = arrStrToArrNum(tmpX);  //  переводим нашу строку в массив чиссел, а потом заполняем им xi
   }
   if(tmpY != ''){  //  если строка не пустая, то
       yi.splice(0,yi.length);  //  опустошаем массив
-      yi = tmpY.split(',').map(Number);  //  переводим нашу строку в массив чиссел, а потом заполняем им xi
+      yi = arrStrToArrNum(tmpY);  //  переводим нашу строку в массив чиссел, а потом заполняем им xi
   }
   /*
   for(let i = 0; i < tmp.length + 1; i++){
@@ -165,7 +172,6 @@ function Start() {
     }
   }
   */
-  console.log(xi);
 
   // Polinom Nutona
   let pol = Polinom(xi, yi, ApproxValue);
